@@ -12,12 +12,12 @@ from typing import List
 
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-       memo = []
-       for num in nums:
-            if num in memo:
+       hashmap = {}
+       for i, num in enumerate(nums):
+            if num in hashmap:
                 return True
             else:
-                memo.append(num)
+                hashmap[num] = i
 
 # @lc code=end
 
