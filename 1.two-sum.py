@@ -11,12 +11,15 @@ class Solution(object):
         :type nums: List[int]
         :type target: int
         :rtype: List[int]
-      
-          """
-        for i in range(len(nums)):
-            for j in range(1, len(nums)):
-                if (i != j) and (nums[i] + nums[j] == target):
-                     return [i,j]
+        """
+        hash = {}
+        for i, num in enumerate(nums):
+          n = target - num
+          if n in hash:
+              return [hash[n],i]
+          else:
+              hash[num] = i
+              
 
-# @lc code=end
+# @lc code=end 
 
