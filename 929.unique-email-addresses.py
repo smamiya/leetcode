@@ -10,15 +10,13 @@ from typing import List
 
 class Solution:
     def numUniqueEmails(self, emails: List[str]) -> int:
-        hash = {}
-        for i,email in enumerate(emails):
-            localname = email[:email.find('@')]
-            localname = localname.replace('.', '')
-            if localname.find('+') > -1:
-                localname = localname[:localname.find('+')]
-            domainname = email[email.find('@'):]
-            if  not localname + domainname in hash:
-                hash[localname + domainname] = i
-        return len(hash)
+        mail_set = set()
+        for email in emails:
+            local, domain = email.split('@')
+            local = local.split('+')[0].replace('.', '')
+            print(local)
+            print(domain)
+            mail_set.add(local + '@' + domain)
+        return len(mail_set)
 # @lc code=end
 
